@@ -173,11 +173,29 @@ body {
   cursor: auto;
 }
 
+.contSeta {
+  padding-top: 8px;
+}
+
 .contPaginacao{
+  width: 100%;
+  text-align: center;
   padding: 16px;
 }
 
 .numPag {
+  background: white;
+  font-size: 21px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #D42026;
+  border-radius: 100%;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 20px;
+}   
+
+.numPagSel {
   background: #D42026;
   font-size: 21px;
   width: 32px;
@@ -186,9 +204,15 @@ body {
   cursor: pointer;
   text-align: center;
   margin-right: 20px;
-}   
+} 
+
+.numPagTextSel {
+  margin: 3px;
+  color: white;
+}  
 
 .numPagText {
   margin: 3px;
+  color: #D42026;
 }  
 

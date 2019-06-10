@@ -74,7 +74,6 @@ function listaPersonagensFct(offset,acao){
             descricao.setAttribute('class', 'descrPersonagem');
             characters.attributes.description = characters.attributes.description.length >= 200?characters.attributes.description.substring(0, 200)+"...":characters.attributes.description;
             descricao.textContent = characters.attributes.description;
-    
 
             container.appendChild(linha);
             contDesc.appendChild(descricao);
@@ -86,22 +85,30 @@ function listaPersonagensFct(offset,acao){
         });
 
         //Gerar container paginação
-        const offsetMax = getOffSetMax(data.links.last); 
+        const offsetMax = parseInt(getOffSetMax(data.links.last)); 
 
         const contPaginacao = document.createElement('div');
         contPaginacao.setAttribute('class', 'container justify-center contPaginacao');
         
+        const contBtPrev = document.createElement('div');
+        contBtPrev.setAttribute('class', 'contSeta');
+
         const btPrev = document.createElement('div');
         btPrev.setAttribute('class', (offsetGlobal==0?'seta-esquerda-disabled':'seta-esquerda'));
         if (offsetGlobal>0) btPrev.addEventListener("click", function() { listaPersonagensFct(-10,true); } );
 
+        const contBtNext = document.createElement('div');
+        contBtNext.setAttribute('class', 'contSeta');
+
         const btNext = document.createElement('div');
         btNext.setAttribute('class', ((offsetMax-10)<offsetGlobal)?'seta-direita-disabled':'seta-direita');
-         if (!((offsetMax-10)<offsetGlobal)) btNext.addEventListener("click", function() { listaPersonagensFct(10,true); } );
+        if (!((offsetMax-10)<offsetGlobal)) btNext.addEventListener("click", function() { listaPersonagensFct(10,true); } );
 
-        contPaginacao.appendChild(btPrev);
+        contBtPrev.appendChild(btPrev);
+        contBtNext.appendChild(btNext);
+        contPaginacao.appendChild(contBtPrev);
 
-        for (var j=1; offsetMax>=(j*10); j++){
+        for (var j=1; (offsetMax+10)>=(j*10); j++){
 
             const numPagDiv = document.createElement('div');
             numPagDiv.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagSel':'numPag');
@@ -114,8 +121,8 @@ function listaPersonagensFct(offset,acao){
             numPagDiv.appendChild(numPagText);
             contPaginacao.appendChild(numPagDiv);
         }
-
-        contPaginacao.appendChild(btNext);
+        
+        contPaginacao.appendChild(contBtNext);
         container.appendChild(contPaginacao);
 
       }
