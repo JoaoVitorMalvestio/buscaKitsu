@@ -26,10 +26,15 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .justify-between {
     justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .column {
@@ -140,9 +145,28 @@ body {
 }
 
 .linhaItem {
+  cursor: pointer;
   border-bottom: 1px solid #D42026;
 }
 
 .linhaItem:hover {
   background: #fbe9ea;
+}
+
+.seta-direita {
+  border-left: 12px solid #D42026; 
+  border-top: 8px solid transparent;  
+  border-bottom: 8px solid transparent;
+  cursor: pointer;
+}
+
+.seta-esquerda {
+  border-right: 12px solid #D42026; 
+  border-top: 8px solid transparent;  
+  border-bottom: 8px solid transparent;
+  cursor: pointer;
+}
+
+.contPaginacao{
+  padding: 16px;
 }

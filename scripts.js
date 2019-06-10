@@ -1,8 +1,12 @@
-document.getElementById("filtroNome").addEventListener("change", listaPersonagensFct);
+var offsetGlobal = 0;
+
+document.getElementById("filtroNome").addEventListener("change", function() { listaPersonagensFct(0); });
 
 listaPersonagensFct(0);
 
 function listaPersonagensFct(offset){
+    offsetGlobal += (offset==0?0:offset);
+
     document.getElementById('listaPersonagens').innerText = "";
 
     const listaPersonagens = document.getElementById('listaPersonagens');
@@ -15,13 +19,14 @@ function listaPersonagensFct(offset){
     var request = new XMLHttpRequest();
     var nomeFiltro = document.getElementById("filtroNome").value;
     
-    request.open('GET', 'https://kitsu.io/api/edge/characters?page[limit]=10&page[offset]=' + offset + '&filter[name]=' + nomeFiltro);
+    request.open('GET', 'https://kitsu.io/api/edge/characters?page[limit]=10&page[offset]=' + offsetGlobal + '&filter[name]=' + nomeFiltro);
     
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
         var data = JSON.parse(this.responseText);
 
+        //Gera linha header da table
         const linhaH = document.createElement('tr');
         linhaH.setAttribute('class', 'linha container');                
 
@@ -37,6 +42,7 @@ function listaPersonagensFct(offset){
         linhaH.appendChild(descricaoH);
         container.appendChild(linhaH);
     
+        //Gera linha de dados da table
         data.data.forEach(characters => {
             const linha = document.createElement('tr');
             linha.setAttribute('class', 'linhaItem container ');            
@@ -73,7 +79,29 @@ function listaPersonagensFct(offset){
             linha.appendChild(thPersonagem);
             linha.appendChild(contDesc);            
         });
+
+        //Gerar container paginação
+        const contPaginacao = document.createElement('div');
+        contPaginacao.setAttribute('class', 'container justify-center contPaginacao');
         
+        const btPrev = document.createElement('div');
+        btPrev.setAttribute('class', 'seta-esquerda');
+        btPrev.addEventListener("click", function() { listaPersonagensFct(0); } );
+
+        const btNext = document.createElement('div');
+        btNext.setAttribute('class', 'seta-direita');
+        btNext.addEventListener("click", function() { listaPersonagensFct(10); } );
+
+        contPaginacao.appendChild(btPrev);
+        
+    
+        /*for (var i; i>tamOffset; i+=10){
+
+        }*/
+
+        contPaginacao.appendChild(btNext);
+        container.appendChild(contPaginacao);
+
       }
     };
     
