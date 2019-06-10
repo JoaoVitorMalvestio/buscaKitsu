@@ -1,0 +1,137 @@
+* {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal; 
+}
+
+body {
+    margin: 0px;
+    padding: 20px 42px 16px 42px;
+
+}
+
+#linha {
+    width: 54px;
+    height: 34px;
+    border-top: 4px solid #D42026;
+}
+
+#filtroNome {
+  margin-bottom: 34px;
+  height: 31px;
+  width: 400px;
+  border: 1px solid center #A5A5A5;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.title {
+  color: #D42026;
+  opacity: 100%;
+  font-size: 27px;
+  font-weight: 400;
+  font-style: normal; 
+}
+
+.label {
+  color: #D42026;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;  
+}
+
+.light { 
+  font-weight: 300;
+  font-style: normal;  
+}
+
+.black { 
+  font-weight: 900;
+  font-style: normal;  
+}
+
+.personagemH{
+  width: 25%;
+  background: #D42026;
+}
+
+.descricaoH{
+  width: 75%;
+  background: #D42026;
+}
+
+.personagem{
+  width: 25%;
+}
+
+.linha {
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.personagemH{
+  width: 25%;
+  color: white;    
+  margin-right: 10px;
+  padding: 9px;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal; 
+  text-align: left;
+}
+
+.descricaoH{
+  width: 75%;
+  color: white;  
+  padding: 9px;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal; 
+  text-align: left;
+}
+
+.imgPersonagem {
+  margin-top: 27px;
+  margin-right: 25px;
+  border-radius: 100%;
+  width: 58px;
+  height: 58px;
+}
+
+.containerPernsonagem {
+  flex-wrap: nowrap;
+}
+
+.thPersonagem {
+  width: 25%;
+  flex-wrap: nowrap;
+  padding-left: 9px;
+  height: 112px;
+}
+
+.thDescricao {
+  width: 75%;  
+}
+
+.nomePersonagem, .descrPersonagem {
+  font-size: 21px;
+} 
+
+.nomePersonagem {
+  margin-top: 45.5px;
+}
+
+.borda {
+  border-bottom: 1px solid #D42026;
+}
