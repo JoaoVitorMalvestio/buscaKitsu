@@ -4,8 +4,13 @@ document.getElementById("filtroNome").addEventListener("change", function() { li
 
 listaPersonagensFct(0);
 
-function listaPersonagensFct(offset){
-    offsetGlobal += (offset==0?0:offset);
+function listaPersonagensFct(offset,acao){
+    if (acao==null) {
+        offsetGlobal = offset;
+    } 
+    else{
+        offsetGlobal+=offset;
+    } 
 
     document.getElementById('listaPersonagens').innerText = "";
 
@@ -19,7 +24,7 @@ function listaPersonagensFct(offset){
     var request = new XMLHttpRequest();
     var nomeFiltro = document.getElementById("filtroNome").value;
     
-    request.open('GET', 'https://kitsu.io/api/edge/characters?page[limit]=10&page[offset]=' + offsetGlobal + '&filter[name]=' + nomeFiltro);
+    request.open('GET', 'https://kitsu.io/api/edge/characters?filter[name]=' + nomeFiltro + '&page[limit]=10&page[offset]=' + offsetGlobal);
     
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -81,23 +86,34 @@ function listaPersonagensFct(offset){
         });
 
         //Gerar container paginação
+        const offsetMax = getOffSetMax(data.links.last); 
+
         const contPaginacao = document.createElement('div');
         contPaginacao.setAttribute('class', 'container justify-center contPaginacao');
         
         const btPrev = document.createElement('div');
-        btPrev.setAttribute('class', 'seta-esquerda');
-        btPrev.addEventListener("click", function() { listaPersonagensFct(0); } );
+        btPrev.setAttribute('class', (offsetGlobal==0?'seta-esquerda-disabled':'seta-esquerda'));
+        if (offsetGlobal>0) btPrev.addEventListener("click", function() { listaPersonagensFct(-10,true); } );
 
         const btNext = document.createElement('div');
-        btNext.setAttribute('class', 'seta-direita');
-        btNext.addEventListener("click", function() { listaPersonagensFct(10); } );
+        btNext.setAttribute('class', ((offsetMax-10)<offsetGlobal)?'seta-direita-disabled':'seta-direita');
+         if (!((offsetMax-10)<offsetGlobal)) btNext.addEventListener("click", function() { listaPersonagensFct(10,true); } );
 
         contPaginacao.appendChild(btPrev);
-        
-    
-        /*for (var i; i>tamOffset; i+=10){
 
-        }*/
+        for (var j=1; offsetMax>=(j*10); j++){
+
+            const numPagDiv = document.createElement('div');
+            numPagDiv.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagSel':'numPag');
+            numPagDiv.addEventListener("click", function() { listaPersonagensFct( ((numPagDiv.textContent - 1) * 10) ); } );
+
+            const numPagText = document.createElement('div');
+            numPagText.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagTextSel':'numPagText');
+            numPagText.textContent = j;
+
+            numPagDiv.appendChild(numPagText);
+            contPaginacao.appendChild(numPagDiv);
+        }
 
         contPaginacao.appendChild(btNext);
         container.appendChild(contPaginacao);
@@ -106,4 +122,10 @@ function listaPersonagensFct(offset){
     };
     
     request.send();
+}
+
+function getOffSetMax(link){
+    var v = link.split("=");
+
+     return v[v.length-1];
 }

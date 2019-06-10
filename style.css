@@ -5,9 +5,9 @@
 }
 
 body {
-    margin: 0px;
-    padding: 20px 42px 16px 42px;
-
+  margin: 0px;
+  padding: 20px 42px 0px 42px;
+  border-bottom: 12px solid #D42026;
 }
 
 #linha {
@@ -153,20 +153,42 @@ body {
   background: #fbe9ea;
 }
 
-.seta-direita {
+.seta-direita, .seta-direita-disabled {
   border-left: 12px solid #D42026; 
   border-top: 8px solid transparent;  
   border-bottom: 8px solid transparent;
   cursor: pointer;
 }
 
-.seta-esquerda {
+.seta-esquerda, .seta-esquerda-disabled {
   border-right: 12px solid #D42026; 
   border-top: 8px solid transparent;  
   border-bottom: 8px solid transparent;
   cursor: pointer;
+  margin-right: 12px;
+}
+
+.seta-direita-disabled, .seta-esquerda-disabled {
+  opacity: 0.35;
+  cursor: auto;
 }
 
 .contPaginacao{
   padding: 16px;
 }
+
+.numPag {
+  background: #D42026;
+  font-size: 21px;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 20px;
+}   
+
+.numPagText {
+  margin: 3px;
+}  
+
