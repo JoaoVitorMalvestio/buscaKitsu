@@ -39,7 +39,7 @@ function listaPersonagensFct(offset){
     
         data.data.forEach(characters => {
             const linha = document.createElement('tr');
-            linha.setAttribute('class', 'linha container borda');            
+            linha.setAttribute('class', 'linhaItem container ');            
 
             const  thPersonagem = document.createElement('th');
             thPersonagem.setAttribute('class', 'thPersonagem');

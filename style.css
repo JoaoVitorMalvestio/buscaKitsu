@@ -75,7 +75,7 @@ body {
   width: 25%;
 }
 
-.linha {
+.linha, .linhaItem {
   width: 100%;
   flex-wrap: nowrap;
 }
@@ -113,6 +113,11 @@ body {
   flex-wrap: nowrap;
 }
 
+.thPersonagem, .thDescricao{
+  text-align: left;
+}
+
+
 .thPersonagem {
   width: 25%;
   flex-wrap: nowrap;
@@ -122,9 +127,11 @@ body {
 
 .thDescricao {
   width: 75%;  
+  padding: 20px;
+  padding-left: 34px;
 }
 
-.nomePersonagem, .descrPersonagem {
+.nomePersonagem, .descrPersonagem {  
   font-size: 21px;
 } 
 
@@ -132,6 +139,10 @@ body {
   margin-top: 45.5px;
 }
 
-.borda {
+.linhaItem {
   border-bottom: 1px solid #D42026;
+}
+
+.linhaItem:hover {
+  background: #fbe9ea;
 }
