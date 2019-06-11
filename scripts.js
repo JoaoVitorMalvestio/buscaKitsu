@@ -50,7 +50,8 @@ function listaPersonagensFct(offset,acao){
         //Gera linha de dados da table
         data.data.forEach(characters => {
             const linha = document.createElement('tr');
-            linha.setAttribute('class', 'linhaItem container ');            
+            linha.setAttribute('class', 'linhaItem container '); 
+            linha.addEventListener("click", function() { listaMediaPersonagemFct(characters.id); } );
 
             const  thPersonagem = document.createElement('th');
             thPersonagem.setAttribute('class', 'thPersonagem');
@@ -135,4 +136,42 @@ function getOffSetMax(link){
     var v = link.split("=");
 
      return v[v.length-1];
+}
+
+function listaMediaPersonagemFct(id){
+    var request = new XMLHttpRequest();
+    
+    request.open('GET', 'https://kitsu.io/api/edge/characters/' + id + '/media-characters');
+    
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+    
+            var mediaCharacterObj = JSON.parse(this.responseText);
+
+            mediaCharacterObj.data.forEach(mediaCharacter => {
+
+                var media = getMediaData(mediaCharacter.relationships.media.links.related);
+
+            });
+        }
+            
+        
+    }
+    request.send();
+}
+
+function getMediaData(jsonLink){
+    var request = new XMLHttpRequest();
+    
+    request.open('GET', jsonLink);
+    
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+    
+            var media = JSON.parse(this.responseText);
+
+            alert(media.data.type + ' ' + media.data.attributes.canonicalTitle);
+        }
+    }
+    request.send();
 }

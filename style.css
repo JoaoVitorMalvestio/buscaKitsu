@@ -215,4 +215,33 @@ body {
   margin: 3px;
   color: #D42026;
 }  
+ /*
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
 
+.contModal {
+  padding: 10px;
+  max-width: 600px;
+  min-width: 360px;
+  max-height: 85%;
+  overflow: auto;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  z-index: 2;
+  opacity: 0;
+  border-radius: 3px;
+  background: #fff;
+}*/
