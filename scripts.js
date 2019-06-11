@@ -109,6 +109,7 @@ function listaPersonagensFct(offset,acao){
         contBtNext.appendChild(btNext);
         contPaginacao.appendChild(contBtPrev);
 
+        //Gera os numeros de pagina
         for (var j=1; (offsetMax+10)>=(j*10); j++){
 
             const numPagDiv = document.createElement('div');
@@ -143,24 +144,26 @@ function listaMediaPersonagemFct(id){
     
     request.open('GET', 'https://kitsu.io/api/edge/characters/' + id + '/media-characters');
     
+    var medias = [];
+
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
             var mediaCharacterObj = JSON.parse(this.responseText);
 
+            
+
             mediaCharacterObj.data.forEach(mediaCharacter => {
-
-                var media = getMediaData(mediaCharacter.relationships.media.links.related);
-
+                var media;
+                var retornoMedia = new Promise( ()=> media = getMediaData(mediaCharacter.relationships.media.links.related, (value) => medias.push(value)));
+                //retornoMedia.then(alert(media));
             });
         }
-            
-        
     }
     request.send();
 }
 
-function getMediaData(jsonLink){
+function getMediaData(jsonLink, consumer){
     var request = new XMLHttpRequest();
     
     request.open('GET', jsonLink);
@@ -169,8 +172,10 @@ function getMediaData(jsonLink){
         if (this.readyState === 4) {
     
             var media = JSON.parse(this.responseText);
+            
+            consumer(media);
 
-            alert(media.data.type + ' ' + media.data.attributes.canonicalTitle);
+            alert(media.data.type + " " + media.data.attributes.canonicalTitle);
         }
     }
     request.send();
