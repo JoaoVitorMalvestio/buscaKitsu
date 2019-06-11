@@ -1,6 +1,7 @@
 var offsetGlobal = 0;
 
 document.getElementById("filtroNome").addEventListener("change", function() { listaPersonagensFct(0); });
+document.getElementById("btFechaModal").addEventListener("click",  function() { var modal = document.getElementById("modal"); modal.setAttribute('class','modal-hidden'); });
 
 listaPersonagensFct(0);
 
@@ -144,26 +145,27 @@ function listaMediaPersonagemFct(id){
     
     request.open('GET', 'https://kitsu.io/api/edge/characters/' + id + '/media-characters');
     
-    var medias = [];
+    var modal = document.getElementById("modal");
+    modal.setAttribute('class','modal-mostra');
+
+    var container = document.getElementById("contMedia");
+
+    container.innerHTML = "<tr><td>Tipo<td>Nome";
 
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
             var mediaCharacterObj = JSON.parse(this.responseText);
 
-            
-
             mediaCharacterObj.data.forEach(mediaCharacter => {
-                var media;
-                var retornoMedia = new Promise( ()=> media = getMediaData(mediaCharacter.relationships.media.links.related, (value) => medias.push(value)));
-                //retornoMedia.then(alert(media));
+                var media = getMediaData(mediaCharacter.relationships.media.links.related);
             });
         }
     }
     request.send();
 }
 
-function getMediaData(jsonLink, consumer){
+function getMediaData(jsonLink){
     var request = new XMLHttpRequest();
     
     request.open('GET', jsonLink);
@@ -171,11 +173,9 @@ function getMediaData(jsonLink, consumer){
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
-            var media = JSON.parse(this.responseText);
-            
-            consumer(media);
+            var media = JSON.parse(this.responseText);                
 
-            alert(media.data.type + " " + media.data.attributes.canonicalTitle);
+            document.getElementById("contMedia").innerHTML += "<tr><td>" + media.data.type + "<td>" + media.data.attributes.canonicalTitle;
         }
     }
     request.send();
