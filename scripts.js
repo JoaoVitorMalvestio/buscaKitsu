@@ -166,6 +166,8 @@ function listaMediaPersonagemFct(id){
 
     const table = document.getElementById("contMedia");
 
+    table.innerHTML = ''; //Limpa table
+
     linha.appendChild(tipoHeader);
     linha.appendChild(tituloImgHeader);
     table.appendChild(linha);
