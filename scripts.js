@@ -116,11 +116,11 @@ function listaPersonagensFct(offset,acao){
         for (var j=1; offsetMax >= (j*10); j++){
 
             const numPagDiv = document.createElement('div');
-            numPagDiv.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagSel':'numPag');
+            numPagDiv.setAttribute('class',(estaNaPagina(j)?'numPagSel':'numPag') + (j>3?' hiddenMobile':''));
             numPagDiv.addEventListener("click", function() { listaPersonagensFct( ((numPagDiv.textContent - 1) * 10) ); } );
 
             const numPagText = document.createElement('div');
-            numPagText.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagTextSel':'numPagText');
+            numPagText.setAttribute('class',(estaNaPagina(j)?'numPagTextSel':'numPagText'));
             numPagText.textContent = j;
 
             numPagDiv.appendChild(numPagText);
@@ -134,6 +134,10 @@ function listaPersonagensFct(offset,acao){
     };
     
     request.send();
+}
+
+function estaNaPagina(j){
+    return (((j-1) * 10)==offsetGlobal);
 }
 
 function getOffSetMax(link){

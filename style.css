@@ -10,23 +10,10 @@ body {
   border-bottom: 12px solid #D42026;
 }
 
-@media only screen and (max-width: 500px){
-  body {
-    padding: 12px 42px 0px 42px;
-  }
-}
-
 #linha {
   width: 54px;
   height: 34px;
   border-top: 4px solid #D42026;
-}
-
-@media only screen and (max-width: 500px){
-  #linha {
-    width: 54px;
-    height: 12px;
-  }
 }
 
 #filtroNome {
@@ -34,13 +21,6 @@ body {
   height: 31px;
   width: 400px;
   border: 1px solid center #A5A5A5;
-}
-
-@media only screen and (max-width: 500px){
-  #filtroNome {
-    margin-bottom: 16px;
-    width: 100%;
-  }
 }
 
 #btFechaModal {
@@ -81,17 +61,6 @@ body {
   font-style: normal; 
 }
 
-@media only screen and (max-width: 500px){
-  .title {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (max-width: 500px){
-  .hiddenMobile{
-    display: none;
-  }
-}
 .label {
   color: #D42026;
   font-size: 16px;
@@ -107,16 +76,6 @@ body {
 .black { 
   font-weight: 900;
   font-style: normal;  
-}
-
-.personagemH{
-  width: 25%;
-  background: #D42026;
-}
-
-.descricaoH{
-  width: 75%;
-  background: #D42026;
 }
 
 .personagem{
@@ -137,6 +96,7 @@ body {
   font-weight: 400;
   font-style: normal; 
   text-align: left;
+  background: #D42026;
 }
 
 .descricaoH{
@@ -147,6 +107,7 @@ body {
   font-weight: 400;
   font-style: normal; 
   text-align: left;
+  background: #D42026;
 }
 
 .imgPersonagem {
@@ -280,4 +241,42 @@ body {
 .modal-mostra h2 {
   margin: 0px;
   color: #D42026;
+}
+
+@media only screen and (max-width: 500px){
+  body {
+    padding: 12px 0px 0px 0px;
+  }
+
+  #filtroNome {
+    margin-bottom: 16px;
+    width: 80%;
+    margin-right: 42px;
+  }
+
+  .thDescricao, .hiddenMobile, .descricaoH{
+    display: none;
+  }
+
+  .thPersonagem{
+    width: 100%;
+  }
+
+  .personagemH{
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  #linha {
+    width: 54px;
+    height: 12px;
+  }
+
+  .ajustaMargem{
+    margin-left: 42px;
+  }
 }
