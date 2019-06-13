@@ -116,7 +116,7 @@ function listaPersonagensFct(offset,acao){
         for (var j=1; offsetMax >= (j*10); j++){
 
             const numPagDiv = document.createElement('div');
-            numPagDiv.setAttribute('class',(estaNaPagina(j)?'numPagSel':'numPag') + (j>3?' hiddenMobile':''));
+            numPagDiv.setAttribute('class','numPag' + (estaNaPagina(j)?' numPagSel':'') + (j>3?' hiddenMobile':''));
             numPagDiv.addEventListener("click", function() { listaPersonagensFct( ((numPagDiv.textContent - 1) * 10) ); } );
 
             const numPagText = document.createElement('div');

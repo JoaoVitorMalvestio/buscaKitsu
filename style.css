@@ -162,6 +162,7 @@ body {
   border-top: 8px solid transparent;  
   border-bottom: 8px solid transparent;
   cursor: pointer;
+  margin-left: 2px;
 }
 
 .seta-esquerda, .seta-esquerda-disabled {
@@ -169,7 +170,7 @@ body {
   border-top: 8px solid transparent;  
   border-bottom: 8px solid transparent;
   cursor: pointer;
-  margin-right: 12px;
+  margin-right: 2px;
 }
 
 .seta-direita-disabled, .seta-esquerda-disabled {
@@ -190,24 +191,17 @@ body {
 .numPag {
   background: white;
   font-size: 21px;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #D42026;
   border-radius: 100%;
   cursor: pointer;
   text-align: center;
-  margin-right: 20px;
+  margin: 0px 10px 0px 10px;
 }   
 
 .numPagSel {
   background: #D42026;
-  font-size: 21px;
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-  cursor: pointer;
-  text-align: center;
-  margin-right: 20px;
 } 
 
 .numPagTextSel {
@@ -254,7 +248,7 @@ body {
     margin-right: 42px;
   }
 
-  .thDescricao, .hiddenMobile, .descricaoH{
+  .thDescricao, .hiddenMobile, .descricaoH {
     display: none;
   }
 
@@ -262,7 +256,7 @@ body {
     width: 100%;
   }
 
-  .personagemH{
+  .personagemH {
     width: 100%;
     margin-right: 0px;
   }
@@ -276,7 +270,19 @@ body {
     height: 12px;
   }
 
-  .ajustaMargem{
+  .ajustaMargem {
     margin-left: 42px;
+  }
+
+  .contPaginacao {
+    padding: 18px 30px 24px 30px;
+  }
+
+  .seta-esquerda-disabled, .seta-esquerda {
+    margin-right: 50px;
+  }
+
+  .seta-direita-disabled, .seta-direita {
+    margin-left: 60px;
   }
 }
