@@ -75,8 +75,9 @@ function listaPersonagensFct(offset,acao){
 
             const descricao = document.createElement('span');
             descricao.setAttribute('class', 'descrPersonagem');
+            characters.attributes.description = tiraTagBr(characters.attributes.description);
             characters.attributes.description = characters.attributes.description.length >= 200?characters.attributes.description.substring(0, 200)+"...":characters.attributes.description;
-            descricao.textContent = characters.attributes.description;
+            descricao.textContent = tiraTagBr(characters.attributes.description);
 
             container.appendChild(linha);
             contDesc.appendChild(descricao);
@@ -184,4 +185,9 @@ function getMediaData(jsonLink){
         }
     }
     request.send();
+}
+
+function tiraTagBr(texto){
+    //Tira a tag <br> do texto
+    return texto = texto.replace(/<br>/g," ");
 }
