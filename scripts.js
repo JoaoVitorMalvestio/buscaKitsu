@@ -112,7 +112,7 @@ function listaPersonagensFct(offset,acao){
         contPaginacao.appendChild(contBtPrev);
 
         //Gera os numeros de pagina
-        for (var j=1; (offsetMax+10)>=(j*10); j++){
+        for (var j=1; offsetMax >= (j*10); j++){
 
             const numPagDiv = document.createElement('div');
             numPagDiv.setAttribute('class',(((j-1) * 10)==offsetGlobal)?'numPagSel':'numPag');
@@ -138,7 +138,11 @@ function listaPersonagensFct(offset,acao){
 function getOffSetMax(link){
     var v = link.split("=");
 
-     return v[v.length-1];
+    var aux = parseInt(v[v.length-1]);
+
+    if (aux > 60) aux = 60;
+
+    return parseInt(aux);
 }
 
 function listaMediaPersonagemFct(id){
