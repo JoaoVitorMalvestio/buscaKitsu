@@ -24,8 +24,9 @@ function listaPersonagensFct(offset,acao){
 
     var request = new XMLHttpRequest();
     var nomeFiltro = document.getElementById("filtroNome").value;
+    var montaFiltro = nomeFiltro==""?"":("&filter[name]=" + nomeFiltro);
     
-    request.open('GET', 'https://kitsu.io/api/edge/characters?filter[name]=' + nomeFiltro + '&page[limit]=10&page[offset]=' + offsetGlobal);
+    request.open('GET', 'https://kitsu.io/api/edge/characters?page[limit]=10&page[offset]=' + offsetGlobal + montaFiltro);
     
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
