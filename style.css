@@ -23,6 +23,14 @@ body {
   border: 1px solid center #A5A5A5;
 }
 
+#btFechaModal {
+  float: right;
+}
+
+#contMedia {
+  width: 100%;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -220,7 +228,7 @@ body {
   color: #D42026;
 }  
 
-.modal-mostra{
+.modal-mostra {
     position: fixed;
     top: 10%;
     left: 25%;
@@ -228,9 +236,17 @@ body {
     border: 1px solid black;
     padding: 5px;
     display: block;
+    overflow-y: scroll;
+    height: 75%;
+    width: 50%;
 }
 
 .modal-hidden{
   visibility: hidden;
   display: none;
+}
+
+.modal-mostra h2 {
+  margin: 0px;
+  color: #D42026;
 }

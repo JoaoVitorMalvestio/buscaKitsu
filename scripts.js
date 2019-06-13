@@ -154,10 +154,22 @@ function listaMediaPersonagemFct(id){
     var modal = document.getElementById("modal");
     modal.setAttribute('class','modal-mostra');
 
-    var container = document.getElementById("contMedia");
+    const linha            = document.createElement('tr');    
+    const tipoHeader       = document.createElement('th');    
+    const tituloImgHeader  = document.createElement('th');
 
-    container.innerHTML = "<tr><td>Tipo<td>Nome";
+    tipoHeader.textContent      = 'Tipo';
+    tipoHeader.setAttribute('class','personagemH');
+    
+    tituloImgHeader.textContent = 'Nome';    
+    tituloImgHeader.setAttribute('class','descricaoH');
 
+    const table = document.getElementById("contMedia");
+
+    linha.appendChild(tipoHeader);
+    linha.appendChild(tituloImgHeader);
+    table.appendChild(linha);
+    
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
@@ -179,9 +191,35 @@ function getMediaData(jsonLink){
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
     
-            var media = JSON.parse(this.responseText);                
+            var media = JSON.parse(this.responseText);   
+            
+            const linha        = document.createElement('tr');
+            const tipoCont     = document.createElement('td');
+            const tipoText     = document.createElement('span');
+            const nomeImgCont  = document.createElement('td');
+            const imgCont      = document.createElement('div');
+            const img          = document.createElement('img');
+            const tituloText   = document.createElement('span');
 
-            document.getElementById("contMedia").innerHTML += "<tr><td>" + media.data.type + "<td>" + media.data.attributes.canonicalTitle;
+            tipoText.textContent   = media.data.type;
+            img.src                = media.data.attributes.posterImage.tiny;
+            tituloText.textContent = media.data.attributes.canonicalTitle;
+
+            tipoCont.appendChild(tipoText);
+
+            imgCont.appendChild(img);
+
+            nomeImgCont.appendChild(imgCont);
+            nomeImgCont.appendChild(tituloText);
+
+            linha.appendChild(tipoCont);
+            linha.appendChild(nomeImgCont);
+            
+
+            var tableMedia = document.getElementById("contMedia");
+            tableMedia.appendChild(linha);            
+
+            //document.getElementById("contMedia").innerHTML += "<tr><td>" + media.data.type + "<td>" + media.data.attributes.canonicalTitle;
         }
     }
     request.send();
