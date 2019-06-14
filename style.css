@@ -212,7 +212,11 @@ body {
 .numPagText {
   margin: 3px;
   color: #D42026;
-}  
+}
+
+.displayNone{
+  display: none;
+}
 
 .modal-mostra {
     position: fixed;
