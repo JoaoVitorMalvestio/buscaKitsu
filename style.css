@@ -237,7 +237,7 @@ body {
     border: 1px solid black;
     padding: 5px;
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 75%;
     width: 75%;
 }

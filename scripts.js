@@ -89,7 +89,7 @@ function listaPersonagensFct(offset,acao){
         });
 
         //Gerar container paginação
-        const offsetMax = parseInt(getOffSetMax(data.links.last)); 
+        const offsetMax = getOffSetMax(data.links.last); 
 
         const contPaginacao = document.createElement('div');
         contPaginacao.setAttribute('class', 'container justify-center contPaginacao');
@@ -105,15 +105,17 @@ function listaPersonagensFct(offset,acao){
         contBtNext.setAttribute('class', 'contSeta');
 
         const btNext = document.createElement('div');
-        btNext.setAttribute('class', ((offsetMax-10)<offsetGlobal)?'seta-direita-disabled':'seta-direita');
-        if (!((offsetMax-10)<offsetGlobal)) btNext.addEventListener("click", function() { listaPersonagensFct(10,true); } );
+        btNext.setAttribute('class', (((offsetGlobal>offsetMax-10)))?'seta-direita-disabled':'seta-direita');
+        if (!(offsetGlobal>(offsetMax-10))) btNext.addEventListener("click", function() { listaPersonagensFct(10,true); } );
 
         contBtPrev.appendChild(btPrev);
         contBtNext.appendChild(btNext);
         contPaginacao.appendChild(contBtPrev);
 
+        
+
         //Gera os numeros de pagina
-        for (var j=1; offsetMax >= (j*10); j++){
+        for (var j=1; j<=6 /*parseInt(offsetMax+10) >= (j*10)*/ ; j++){
 
             const numPagDiv = document.createElement('div');
             numPagDiv.setAttribute('class','numPag' + (estaNaPagina(j)?' numPagSel':'') + (j>3?' hiddenMobile':''));
@@ -144,8 +146,6 @@ function getOffSetMax(link){
     var v = link.split("=");
 
     var aux = parseInt(v[v.length-1]);
-
-    if (aux > 60) aux = 60;
 
     return parseInt(aux);
 }
