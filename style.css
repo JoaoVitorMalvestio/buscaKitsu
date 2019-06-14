@@ -87,7 +87,7 @@ body {
   flex-wrap: nowrap;
 }
 
-.personagemH{
+.personagemH, .tipoH {
   width: 25%;
   color: white;    
   margin-right: 10px;
@@ -99,7 +99,7 @@ body {
   background: #D42026;
 }
 
-.descricaoH{
+.descricaoH, .tituloImgH{
   width: 75%;
   color: white;  
   padding: 9px;
@@ -125,7 +125,6 @@ body {
 .thPersonagem, .thDescricao{
   text-align: left;
 }
-
 
 .thPersonagem {
   width: 25%;
@@ -155,6 +154,18 @@ body {
 
 .linhaItem:hover {
   background: #fbe9ea;
+}
+
+.tituloText {
+  padding-top: 45.5px;
+}
+
+.tipoCont {
+  padding-left: 9px;
+}
+
+.nomeImgCont {
+  display: flex;
 }
 
 .seta-direita, .seta-direita-disabled {
@@ -221,14 +232,14 @@ body {
 .modal-mostra {
     position: fixed;
     top: 10%;
-    left: 25%;
+    left: 10%;
     background: white;
     border: 1px solid black;
     padding: 5px;
     display: block;
     overflow-y: scroll;
     height: 75%;
-    width: 50%;
+    width: 75%;
 }
 
 .modal-hidden{

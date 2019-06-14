@@ -64,7 +64,7 @@ function listaPersonagensFct(offset,acao){
             const  imagem = document.createElement('img');
             imagem.setAttribute('class', 'imgPersonagem');            
 
-            imagem.src = characters.attributes.image == null?"":characters.attributes.image.original;
+            imagem.src = characters.attributes.image == null?"no-imag.png":characters.attributes.image.original;
     
             const  nome = document.createElement('span');
             nome.setAttribute('class', 'nomePersonagem');
@@ -163,10 +163,10 @@ function listaMediaPersonagemFct(id){
     const tituloImgHeader  = document.createElement('th');
 
     tipoHeader.textContent      = 'Tipo';
-    tipoHeader.setAttribute('class','personagemH');
+    tipoHeader.setAttribute('class','tipoH');
     
     tituloImgHeader.textContent = 'Nome';    
-    tituloImgHeader.setAttribute('class','descricaoH');
+    tituloImgHeader.setAttribute('class','tituloImgH');    
 
     const table = document.getElementById("contMedia");
 
@@ -208,8 +208,16 @@ function getMediaData(jsonLink){
             const tituloText   = document.createElement('span');
 
             tipoText.textContent   = media.data.type;
+
             img.src                = media.data.attributes.posterImage.tiny;
+            img.setAttribute('class','imgPersonagem');
+
             tituloText.textContent = media.data.attributes.canonicalTitle;
+            tituloText.setAttribute('class','tituloText');
+
+            nomeImgCont.setAttribute('class','nomeImgCont');
+
+            tipoCont.setAttribute('class','tipoCont');
 
             tipoCont.appendChild(tipoText);
 
